@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#16090d">
+<title>KUROKASA | Sin Division Survey</title>
+<style>
+:root{--bg:#10090b;--panel:#1b1115;--panel2:#25151b;--line:#63313a;--red:#b91f32;--red2:#e04450;--ivory:#f3e8d8;--muted:#c1aeb0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ivory);font-family:Georgia,"Times New Roman",serif;line-height:1.55;background:radial-gradient(ellipse at 50% 0%,rgba(160,25,43,.34),transparent 48%),radial-gradient(ellipse at 0% 55%,rgba(105,19,31,.20),transparent 35%),var(--bg)}
+main{width:min(850px,100%);margin:auto;padding:22px 15px 48px}
+.hero{text-align:center;padding:28px 14px 24px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(150deg,rgba(35,15,20,.96),rgba(13,10,12,.94));box-shadow:0 12px 40px #0008;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #9b2638;border-radius:50%;opacity:.24;pointer-events:none}
+.hero:before{left:-95px;top:-95px}.hero:after{right:-95px;bottom:-110px}
+.kicker{font-size:12px;letter-spacing:5px;color:#e8a7a8}.logo{display:block;width:min(100%,520px);height:auto;margin:10px auto 6px;border-radius:12px;mix-blend-mode:screen}
+h1{font-size:clamp(34px,8vw,62px);letter-spacing:2px;line-height:1.05;margin:12px 0 8px;color:var(--ivory);text-shadow:3px 3px 0 #651320,-1px -1px 0 #fff5}
+.japanese{font-size:26px;letter-spacing:9px;color:#e3c9b8;margin:4px 0 8px}
+.subtitle{font-family:Arial,sans-serif;color:var(--muted);font-size:12px;letter-spacing:3px}
+.ornament{color:var(--red2);letter-spacing:8px;margin:13px 0 0}
+.notice{margin:18px 0 22px;padding:16px;border:1px solid var(--line);border-left:4px solid var(--red);border-radius:10px;background:rgba(27,17,21,.92);font-family:Arial,sans-serif;font-size:14px}
+.notice strong{color:#f0c7bb}.scalehint{display:block;color:var(--muted);margin-top:9px;font-size:12px}
+.question{padding:16px;margin:12px 0;border:1px solid #4b2930;border-radius:12px;background:linear-gradient(130deg,rgba(31,19,24,.98),rgba(20,13,16,.98))}
+.qtitle{font-weight:bold;margin-bottom:13px;font-size:16px}.qnum{color:#e04b57;margin-right:7px}
+.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.choice{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:62px;padding:8px 2px;border:1px solid #54313a;border-radius:8px;background:var(--panel2);cursor:pointer;text-align:center;font:11px Arial,sans-serif;color:var(--muted)}
+.choice input{accent-color:var(--red2);margin:0}.choice:has(input:checked){background:#65202c;border-color:#f06b73;color:white;box-shadow:inset 0 0 0 1px #d64755}
+.num{font-weight:bold;font-size:16px;color:var(--ivory)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+.page-status{font:13px Arial,sans-serif;color:#e8a7a8;letter-spacing:1px;margin:18px 2px 10px}.page-nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:20px 0}
+.btn{border:1px solid #a73746;border-radius:9px;padding:12px 17px;font-weight:bold;cursor:pointer;font-size:14px}
+.primary{background:linear-gradient(120deg,#d33a4a,#8e1729);color:#fff8ee;border-color:#e35b67}.secondary{background:#21151a;color:var(--ivory)}
+.btn:focus-visible,.choice:focus-within{outline:2px solid #f2c9b5;outline-offset:2px}
+.error{display:none;color:#ffb6b8;margin:10px 0;font-family:Arial,sans-serif}
+.results{display:none;padding:19px;margin-top:22px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.results h2{margin:0 0 5px;font-size:23px}.sub{color:var(--muted);font:13px Arial,sans-serif}
+.resultrow{margin:17px 0}.resulthead{display:flex;justify-content:space-between;gap:12px;font-weight:bold}
+.bar{height:9px;background:#39232a;border-radius:10px;overflow:hidden;margin-top:7px}.fill{height:100%;background:linear-gradient(90deg,#851729,#e44c59);border-radius:10px}
+.resultnote{color:var(--muted);font:12px Arial,sans-serif}.footer{text-align:center;color:#a98d92;font:11px Arial,sans-serif;letter-spacing:3px;margin-top:30px}
+@media(max-width:430px){main{padding:12px 9px 30px}.hero{padding:24px 8px 20px}.question{padding:12px}.qtitle{font-size:15px}.scale{gap:4px}.choice{font-size:9px;min-height:58px;padding:7px 0}.num{font-size:14px}.japanese{font-size:22px}}
+</style>
+</head>
+<body><main>
+<header class="hero">
+<div class="kicker">黒傘 · KUROKASA</div><img class="logo" src="logo.png" alt=""><h1>THE SEVEN SINS</h1><div class="japanese">七つの大罪</div>
+<div class="subtitle">SIN DIVISION SURVEY · 28 QUESTIONS</div><div class="ornament">✦ ━━━━━ ☂ ━━━━━ ✦</div>
+</header>
+<section class="notice"><strong>Instructions</strong><br>Answer based on how you usually act, not how you want others to see you. Choose one answer for every statement. There are no right or wrong answers. Your result reflects personality tendencies, not your strength, rank, or worth in Kurokasa.
+<span class="scalehint"><strong>Scale:</strong> 1 = Not me at all · 2 = Slightly me · 3 = Sometimes me · 4 = Mostly me · 5 = Very much me</span></section>
+<section id="welcomeGate" class="question" style="padding:22px;border-color:#a73746">
+  <div class="kicker" style="letter-spacing:3px">WELCOME TO KUROKASA</div>
+  <h2 style="font-size:clamp(22px,5vw,30px);margin:10px 0">Before You Begin</h2>
+  <p>Before you can take the Sin Division Survey, please enter your Discord username below.</p>
+  <label class="qtitle" for="discordUsername">Discord Username</label>
+  <input id="discordUsername" name="discordUsername" type="text" required maxlength="80"
+    autocomplete="nickname" placeholder="Enter your Discord username"
+    style="width:100%;padding:13px;border:1px solid #63313a;border-radius:8px;background:#10090b;color:#f3e8d8;font:15px Arial,sans-serif">
+  <p class="resultnote" style="margin-top:14px">After you receive your assigned Sin (division), take a screenshot of your results and send it to the Kurokasa Discord server.</p>
+  <div class="actions" style="margin-bottom:0"><button class="btn primary" id="startSurvey" type="button">Enter Survey</button></div>
+</section>
+<form id="survey" style="display:none">
+<div class="page-status" id="pageStatus">PAGE 1 OF 6 · QUESTIONS 1–5</div><div id="questions"></div><div id="error" class="error">Please answer all questions on this page before continuing.</div>
+<div class="page-nav"><button class="btn secondary" id="backPage" type="button" style="display:none">Previous</button><button class="btn primary" id="nextPage" type="button">Next</button><button class="btn primary" id="revealPage" type="submit" style="display:none">Reveal My Sin Division</button></div>
+<div class="actions"><button class="btn secondary" type="reset" id="reset">Reset Answers</button></div></form>
+<section class="results" id="results" aria-live="polite"><h2>Your Assigned Sin Division</h2><p class="sub">Each Sin division has exactly four questions, so all seven scores are compared equally.</p><div id="resultlist"></div>
+<p class="resultnote">Your top three are the strongest matches from your answers, not permanent labels. If you already have a Sin in mind, discuss it with the Pillars or the leader.</p><p><strong>Next step:</strong> Take a screenshot of these results and send it to the Kurokasa Discord server so the leadership team can see your assigned Sin.</p>
+<div class="actions"><button class="btn primary" id="copy" type="button">Copy Results</button><button class="btn secondary" id="retake" type="button">Retake Survey</button></div><p id="copymsg" class="resultnote"></p></section>
+<div class="footer">KUROKASA · 黒傘 · WALK BENEATH THE BLACK UMBRELLA</div></main>
+<script>
+const items = [
+['I feel proud when people recognize my abilities.','Pride'],
+['I find it difficult to admit when I am wrong.','Pride'],
+['I want my work to stand out from everyone else’s.','Pride'],
+['I dislike feeling as if someone is better than me.','Pride'],
+['I pay close attention to what I can gain from a situation.','Greed'],
+['I hate losing something I worked hard to get.','Greed'],
+['I often want more, even when I already have enough.','Greed'],
+['I protect my time, resources, and opportunities carefully.','Greed'],
+['I can become strongly attached to a person or idea I desire.','Lust'],
+['When I want something, it can be hard to think about anything else.','Lust'],
+['I am drawn to excitement and intense experiences.','Lust'],
+['My wants can sometimes outweigh what I know is sensible.','Lust'],
+['I compare my progress or success with other people’s.','Envy'],
+['It bothers me when someone gets something I wanted.','Envy'],
+['I notice quickly when others receive more attention than I do.','Envy'],
+['Seeing someone succeed can make me question my own worth.','Envy'],
+['I enjoy comfort and taking time to relax.','Gluttony'],
+['When I enjoy something, I tend to keep going longer than planned.','Gluttony'],
+['I sometimes use food, games, shopping, or entertainment to improve my mood.','Gluttony'],
+['I can overindulge in things that make me feel good.','Gluttony'],
+['I react strongly when I feel disrespected.','Wrath'],
+['When I am angry, I find it difficult to calm down quickly.','Wrath'],
+['I feel a strong need to confront people who cross a line.','Wrath'],
+['I remember when someone has seriously wronged me.','Wrath'],
+['I tend to put off tasks that feel tiring or stressful.','Sloth'],
+['I prefer the easiest option when the effort seems unnecessary.','Sloth'],
+['I sometimes avoid responsibilities until they become urgent.','Sloth'],
+['I have trouble getting started even when I know what needs to be done.','Sloth']
+];
+const sins=['Pride','Greed','Lust','Envy','Gluttony','Wrath','Sloth'];
+const qroot=document.getElementById('questions');
+items.forEach((item,i)=>{
+ const n=i+1,box=document.createElement('section');box.className='question';box.dataset.question=String(i);
+ box.innerHTML=`<div class="qtitle"><span class="qnum">${String(n).padStart(2,'0')}.</span>${item[0]}</div><div class="scale" role="radiogroup" aria-label="Question ${n}">${[1,2,3,4,5].map(v=>`<label class="choice"><input type="radio" name="q${n}" value="${v}"><span class="num">${v}</span><span>${['Not me','Slightly','Sometimes','Mostly','Very much'][v-1]}</span></label>`).join('')}</div>`;
+ qroot.appendChild(box);
+});
+const pageRanges=[[0,5],[5,10],[10,15],[15,20],[20,25],[25,28]];
+let currentPage=0;
+const pageStatus=document.getElementById('pageStatus'),backBtn=document.getElementById('backPage'),nextBtn=document.getElementById('nextPage'),revealBtn=document.getElementById('revealPage');
+function showPage(page){
+ currentPage=page;
+ const [start,end]=pageRanges[page];
+ document.querySelectorAll('.question[data-question]').forEach((el,i)=>{el.style.display=(i>=start&&i<end)?'block':'none'});
+ pageStatus.textContent=`PAGE ${page+1} OF 6 · QUESTIONS ${start+1}–${end}`;
+ backBtn.style.display=page===0?'none':'inline-block';
+ nextBtn.style.display=page===pageRanges.length-1?'none':'inline-block';
+ revealBtn.style.display=page===pageRanges.length-1?'inline-block':'none';
+ error.style.display='none';
+}
+const form=document.getElementById('survey'),results=document.getElementById('results'),error=document.getElementById('error');
+let summary='',discordUsername='';
+showPage(0);
+nextBtn.addEventListener('click',()=>{
+ const [start,end]=pageRanges[currentPage];
+ const missing=items.findIndex((_,i)=>i>=start&&i<end&&!form.querySelector('input[name="q'+(i+1)+'"]:checked'));
+ if(missing!==-1){error.textContent=`Please answer all questions on this page (questions ${start+1}–${end}) before continuing.`;error.style.display='block';document.querySelector(`[data-question="${missing}"]`).scrollIntoView({behavior:'smooth',block:'center'});return}
+ showPage(currentPage+1);window.scrollTo({top:form.getBoundingClientRect().top+window.scrollY-10,behavior:'smooth'});
+});
+backBtn.addEventListener('click',()=>{showPage(currentPage-1);window.scrollTo({top:form.getBoundingClientRect().top+window.scrollY-10,behavior:'smooth'})});
+document.getElementById('startSurvey').addEventListener('click',()=>{
+ const field=document.getElementById('discordUsername');
+ discordUsername=field.value.trim();
+ if(!discordUsername){field.setCustomValidity('Please enter your Discord username first.');field.reportValidity();field.focus();return}
+ field.setCustomValidity('');
+ document.getElementById('welcomeGate').style.display='none';
+ form.style.display='block';
+ window.scrollTo({top:form.getBoundingClientRect().top+window.scrollY-10,behavior:'smooth'});
+});
+form.addEventListener('submit',e=>{
+ e.preventDefault();
+ const data=new FormData(form);
+ const missing=items.findIndex((_,i)=>!data.get('q'+(i+1)));
+ if(missing!==-1){
+   const targetPage=pageRanges.findIndex(([start,end])=>missing>=start&&missing<end);
+   showPage(targetPage);
+   error.textContent=`Please answer all questions on this page (questions ${pageRanges[targetPage][0]+1}–${pageRanges[targetPage][1]}) before revealing your results.`;
+   error.style.display='block';
+   document.querySelector(`[data-question="${missing}"]`).scrollIntoView({behavior:'smooth',block:'center'});
+   return;
+ }
+ error.style.display='none';
+ const totals=Object.fromEntries(sins.map(s=>[s,0]));
+ items.forEach((item,i)=>totals[item[1]]+=Number(data.get('q'+(i+1))));
+ const ranked=sins.map((sin,index)=>({sin,score:Math.round(((totals[sin]-4)/16)*100),index})).sort((a,b)=>b.score-a.score||a.index-b.index);
+ summary='KUROKASA - SIN DIVISION RESULTS\\nDiscord Username: '+discordUsername+'\\n'+ranked.map((r,i)=>`${i+1}. ${r.sin}: ${r.score}%`).join('\\n');
+ document.getElementById('resultlist').innerHTML=ranked.map((r,i)=>`<div class="resultrow"><div class="resulthead"><span>${i+1}. ${r.sin}${i===0?' · TOP MATCH':i===1?' · SECOND MATCH':i===2?' · THIRD MATCH':''}</span><span>${r.score}%</span></div><div class="bar"><div class="fill" style="width:${r.score}%"></div></div></div>`).join('');
+ results.style.display='block';
+ form.style.display='none';
+ results.scrollIntoView({behavior:'smooth',block:'start'});
+});
+document.getElementById('reset').addEventListener('click',()=>{error.style.display='none';results.style.display='none';document.getElementById('copymsg').textContent=''});
+document.getElementById('retake').addEventListener('click',()=>{form.reset();results.style.display='none';error.style.display='none';document.getElementById('copymsg').textContent='';form.style.display='block';showPage(0);window.scrollTo({top:form.getBoundingClientRect().top+window.scrollY-10,behavior:'smooth'})});
+document.getElementById('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(summary)}catch(e){const t=document.createElement('textarea');t.value=summary;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}document.getElementById('copymsg').textContent='Results copied!'});
+</script></body></html>
